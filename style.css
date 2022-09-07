@@ -1,0 +1,50 @@
+@charset "utf-8";
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+/*
+body {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}*/
+/*
+#container{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 800px;
+    font-size: 25px;
+}
+*/
+
+#canvas1{
+    border: 5px solid black;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%); /*垂直置中*/
+    max-width:  100%; /*264 === 236*/
+    max-height: 100%;/*282 === 120*/
+}
+
+#source {
+    display: none;
+}
+
+.introduce h2{
+    top: 50%;
+    position: relative;
+    text-align: center;
+}
+/*
+#slider{
+    width:100%;
+    color:rgb(255, 255, 255);
+}
+p{
+    color: white;
+}*/
