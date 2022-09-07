@@ -40,7 +40,7 @@ export class Player {
         //if(input.includes('ArrowUp') && this.onGround()) this.vy -= 20;
         
         this.y += this.vy;
-        if(input.includes("ArrowDown")) this.weight = 1;
+        if(input.includes("ArrowDown")) this.weight = 2;
         else this.weight = 0.3;
         if(! this.onGround())this.vy += this.weight;
         else this.vy = 0;
