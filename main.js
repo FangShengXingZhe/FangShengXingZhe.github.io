@@ -23,7 +23,7 @@ window.addEventListener('load' , function(){
             this.UI = new UI(this);
             this.enemies = [];
             this.enemyTimer = 0;
-            this.enemyInterval = 5000;
+            this.enemyInterval = 4000;
             this.debug = true;
             this.score = 0;
             this.fontColor = 'black';
@@ -37,19 +37,17 @@ window.addEventListener('load' , function(){
         update(deltaTime){
             if(this.input.start){
                 this.time += deltaTime;
-                //if(this.time > this.maxTime) this.gameOver = true;
-                //遊戲速度
-                
+  
                 if((this.time * 0.001).toFixed(1) % 5 === 0){
-                    this.player.maxSpeed += 0.5; 
-                    this.enemyInterval -= 10; 
+                    this.speed += 3; 
+                    this.enemyInterval -= 30; 
                 }
                 
-                if( this.player.maxSpeed > 300){
-                    this.player.maxSpeed = 300;
-                    this.enemyInterval = 800;
+                if( this.player.maxSpeed > 400){
+                    this.speed = 400;
+                    this.enemyInterval = 500;
                 } 
-                console.log(this.player.maxSpeed);
+                
             }
             
             
@@ -101,19 +99,17 @@ window.addEventListener('load' , function(){
                 this.enemies.push(new GroundEnemy2(this));
             }
             
-            
-            //console.log(this.enemies);
         }
     }
 
     const game = new Game(canvas.width, canvas.height);
-    //console.log(game);
+
     let lastTime = 0;
 
     function animate(timeStamp){
         
-        const deltaTime = timeStamp - lastTime ; //speed
-        //console.log(deltaTime);
+        const deltaTime = timeStamp - lastTime; //speed
+
         lastTime = timeStamp;
         ctx.clearRect( 0,0, canvas.width , canvas.height);
         game.update(deltaTime);
@@ -124,10 +120,7 @@ window.addEventListener('load' , function(){
         if(game.gameOver){
             window.addEventListener('keydown' , e =>{
             if ((  e.key === 'ArrowDown' ||
-                   e.key === 'ArrowUp'   //||
-                   //e.key === 'ArrowLeft' ||
-                   //e.key === 'ArrowRight'||
-                   //e.key === 'Enter'
+                   e.key === 'ArrowUp'  
                 )){
                 location.reload();
             }

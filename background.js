@@ -9,12 +9,10 @@ class Layer { //一個 連續的 背景類型 ex:土
         this.sy = sy;
         this.x = x;
         this.y = this.game.height - y;
-
-
     }
     update(){
         if (this.x < -this.width){
-            this.x = -this.game.speed * this.speedModifier; //土的不自然抖動 刷新時 要跟著遊戲速度刷新
+            this.x = -this.game.speed * this.speedModifier;
         }
         else{
             this.x -= this.game.speed * this.speedModifier;
@@ -26,7 +24,7 @@ class Layer { //一個 連續的 背景類型 ex:土
     }
 }
 
-class RandomLayer { //一個 隨機位置的 背景類型 ex: 雲
+class RandomLayer {
     constructor(){
         this.frameX = 0;
         this.frameY = 0;
@@ -37,7 +35,7 @@ class RandomLayer { //一個 隨機位置的 背景類型 ex: 雲
     }
     update(deltaTime){
         // movement
-        this.x -= this.speedX * this.game.speed; //要改
+        this.x -= this.speedX * this.game.speed;
         this.y += this.speedY;
         
         if (this.frameTimer > this.frameInterval){
@@ -47,7 +45,6 @@ class RandomLayer { //一個 隨機位置的 背景類型 ex: 雲
         }else {
             this.frameTimer += deltaTime;
         }
-        //是否離開螢幕
         if (this.x + this.width < 0)
             this.markedForDeletion = true;
     }
@@ -58,7 +55,6 @@ class RandomLayer { //一個 隨機位置的 背景類型 ex: 雲
 
 class CloudBackground extends RandomLayer {
     constructor(game){
-        //(img,163, 5, 96, 28, 0, 0, 96, 28)//雲
         super();
         this.game = game;
         this.width =  96;
@@ -83,19 +79,10 @@ export class Background{
     this.randomlayerTimer = 0;
     this.randomlayerInterval = 5600;
     this.randomlayers = [];
-    //this.width = 2400;
-    //this.height = 25;
-    //this.sx = 0;
-    //this.sy = 103;
-    //this.x = 0;
-    //this.y = 55;
-    this.layerimageSource = document.getElementById('source'); //資源圖
-  
+    this.layerimageSource = document.getElementById('source');
 
-    //this.layer0 = new Layer(this.game, this.sx, this.sy, this.width, this.height, this.x, this.y, 1, this.layerimageSource);
-    //土
     this.layer0 = new Layer(this.game,    0,  103, 2400,   25,    0,    55,   0.2, this.layerimageSource);
-    this.backgroundLayers = [this.layer0 ];//, this.randomLayer0 //單一畫面
+    this.backgroundLayers = [this.layer0 ];//, this.randomLayer0
     }
     update(deltaTime , start){
         this.backgroundLayers.forEach(layer =>{
@@ -126,7 +113,6 @@ export class Background{
     }
     addRandomLayer(){
         this.randomlayers.push(new CloudBackground(this.game));
-        //console.log(this.randomlayers);
     }
 
 }

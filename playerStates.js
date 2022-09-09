@@ -79,7 +79,6 @@ export class Running extends State {
         this.game.player.maxFrame = 1; //
     }
     handleInput(input) {
-        //console.log(this.game.player.onGround());
         if (input.includes('ArrowDown') && this.game.player.onGround()) {
             this.game.player.setState(states.SQUATING ,1);
         } else if (input.includes('ArrowUp')) {
@@ -106,11 +105,9 @@ export class Jumping extends State {
         this.game.player.height = stateHeight.JUMPING; //
         this.game.player.groundMargin = 35;
         this.game.player.maxFrame = 0; //
-        //console.log(this.game.player.onGround());
     }
     handleInput(input) {
         if (this.game.player.vy > this.game.player.weight) {
-        //if (this.game.player.onGround()) {
             this.game.player.setState(states.FALLING, 1);
         }
 

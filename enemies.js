@@ -9,7 +9,7 @@ class Enemy {
     }
     update(deltaTime){
         // movement
-        this.x -=  this.game.speed * this.speedX ; //要改
+        this.x -=  this.game.speed * this.speedX ;
         this.y += this.speedY;
         if (this.frameTimer > this.frameInterval){
             this.frameTimer = 0;
@@ -24,7 +24,6 @@ class Enemy {
 
     }
     draw(context){
-        //if(this.game.debug) context.strokeRect(this.x,this.y,this.width, this.height);
         context.drawImage(this.image , this.positionLocationX + this.frameX * this.width, 0 , this.width , this.height , this.x , this.y , this.width , this.height);
     }
 }
@@ -43,13 +42,10 @@ export class FlyingEnemy extends Enemy {
         this.speedY = 0;
         this.maxFrame = 1;
         this.image = document.getElementById('source');
-        //this.angle = 0;
-        //this.va = Math.random() * 0.1 + 0.1;
+
     }
     update(deltaTime){
         super.update(deltaTime);
-        //this.angle += this.va;
-        //this.y += Math.sin(this.angle);
     }
 }
 
@@ -90,7 +86,6 @@ export class GroundEnemy2 extends Enemy {
 }
 
 export class GroundEnemy3 extends Enemy {
-    //Cactus
     constructor(game){
         super();
         this.game = game;
@@ -108,7 +103,6 @@ export class GroundEnemy3 extends Enemy {
 }
 
 export class GroundEnemy4 extends Enemy {
-    //Cactus
     constructor(game){
         super();
         this.game = game;
@@ -126,7 +120,6 @@ export class GroundEnemy4 extends Enemy {
 }
 
 export class GroundEnemy5 extends Enemy {
-    //Cactus
     constructor(game){
         super();
         this.game = game;
@@ -144,7 +137,6 @@ export class GroundEnemy5 extends Enemy {
 }
 
 export class GroundEnemy6 extends Enemy {
-    //Cactus
     constructor(game){
         super();
         this.game = game;
@@ -157,7 +149,6 @@ export class GroundEnemy6 extends Enemy {
         this.speedX = 0.2;
         this.speedY = 0;
         this.maxFrame = 0;
-
     }
 }
 
